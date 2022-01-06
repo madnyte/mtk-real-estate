@@ -1,7 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import {Flex, Box, Text, Button} from "@chakra-ui/react"
-import {url, fetchApi} from "../utils/fetchApi"
+import {fetchApi, baseUrl} from "../utils/fetchApi"
+import Property from "../components/Property";
 
 const Banner = ({purpose, title1, title2, desc1, desc2, imageUrl, linkName, buttonText}) => (
     <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
@@ -25,28 +26,31 @@ const Banner = ({purpose, title1, title2, desc1, desc2, imageUrl, linkName, butt
     </Flex>
 )
 
-export default function Home ({propertiesForSale,propertiesForHire}) {
+export default function Home({propertiesForSale, propertiesForHire}) {
     return (
         <Box>
             <h1>Hello World</h1>
-            <Banner purpose={"For Sale"}/>
+            {/*<Banner purpose={"For Sale"}/>*/}
             <Flex flexWrap="wrap">
-
+                {
+                    propertiesForSale.map((property) => <Property property={property} key={property.id}/>)
+                }
             </Flex>
-            <Banner purpose={"For Hire"}/>
-
+            {
+                propertiesForHire.map((property) => <Property property={property} key={property.id}/>)
+            }
         </Box>
     )
 }
 
 export async function getStaticProps() {
-    const propertyForSale = await fetchApi(`${url}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`)
-    const propertyForHire = await fetchApi(`${url}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`)
+    const propertyForSale = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`)
+    const propertyForHire = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`)
 
     return {
         props: {
-            propertyForSale:  propertyForSale?.hits,
-            propertyForHire: propertyForHire?.hits
+            propertiesForSale: propertyForSale?.hits,
+            propertiesForHire: propertyForHire?.hits
         }
     }
 }
