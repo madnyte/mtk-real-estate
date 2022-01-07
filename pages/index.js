@@ -29,7 +29,6 @@ const Banner = ({purpose, title1, title2, desc1, desc2, imageUrl, linkName, butt
 export default function Home({propertiesForSale, propertiesForHire}) {
     return (
         <Box>
-            <h1>Hello World</h1>
             {/*<Banner purpose={"For Sale"}/>*/}
             <Flex flexWrap="wrap">
                 {
