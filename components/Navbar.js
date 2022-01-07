@@ -1,4 +1,4 @@
-import {Link} from "next/link"
+import Link from "next/link"
 import {Menu,MenuButton,MenuList,MenuItem,IconButton,Flex,Box,Spacer} from "@chakra-ui/react"
 import {FcMenu, FcHome, FcAbout, FcSearch} from "react-icons/fc"
 import {BsSearch} from "react-icons/bs"
@@ -18,7 +18,7 @@ const Navbar = () => (
                         <MenuItem icon={<FcHome/>}>Home</MenuItem>
                     </Link>
                     <Link href="/search" passHref>
-                        <MenuItem icon={<FcSearch/>}>Search</MenuItem>
+                        <MenuItem icon={<BsSearch/>}>Search</MenuItem>
                     </Link>
                     <Link href="/search?purpose=for-sale" passHref>
                         <MenuItem icon={<FcAbout/>}>Buy Property</MenuItem>
@@ -31,6 +31,5 @@ const Navbar = () => (
         </Box>
     </Flex>
 )
-
 
 export default Navbar
