@@ -5,8 +5,11 @@ import Image from "next/image"
 import {MdCancel} from "react-icons/md"
 
 const SearchFilters = () => {
+    const [filters, setFilters] = useState({})
     return (
-        <div></div>
+        <Flex bg="gray.100" justifyContent="center" flexWrap="flex">
+
+        </Flex>
     )
 }
 
