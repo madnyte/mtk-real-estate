@@ -35,9 +35,12 @@ export default function Home({propertiesForSale, propertiesForHire}) {
                     propertiesForSale.map((property) => <Property property={property} key={property.id}/>)
                 }
             </Flex>
-            {
-                propertiesForHire.map((property) => <Property property={property} key={property.id}/>)
-            }
+            <Flex flexWrap="wrap">
+                {
+                    propertiesForHire.map((property) => <Property property={property} key={property.id}/>)
+                }
+            </Flex>
+
         </Box>
     )
 }
